@@ -1,4 +1,4 @@
-# colour-flipper
+# color-flipper
 Simply flip through random colors and get a hex value for it.
 
 
