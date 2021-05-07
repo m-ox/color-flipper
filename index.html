@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Hex Color</title>
+
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            font-family: sans-serif;
+        }
+        
+        .container {
+            width: 100vw;
+            height: 100vh;
+            background-color: grey;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .spacer50 {
+            height: 50px;
+        }
+
+        .spacer200 {
+            height: 200px;
+        }
+
+        .title-wrapper {
+            width: 100%;
+            height: 30px;
+            background: white;
+            display: flex;
+            align-items: center;
+            padding-left: 200px;
+            box-shadow: -1px 2px 3px 0px #534f4f;
+        }
+
+        .title-wrapper p {
+            color:hsl(205deg 79% 63%);
+            font-weight: 700;
+            transition: .5s;
+        }
+
+        .title-wrapper p:hover {
+            letter-spacing: .5px;
+            color: rgb(255, 0, 191);
+            font-style: italic;
+        }
+
+        .color-name-wrapper {
+            background: rgb(37, 37, 37);
+            width: max-content;
+            padding: 10px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 5px;
+            color: white;
+            transition: .5s;
+        }
+
+        button {
+            padding: 10px 25px;
+            border-radius: 10px;
+            text-transform: uppercase;
+            font-weight: 700;
+            background: transparent;
+            transition: .5s;
+        }
+
+        button:hover {
+            background: rgba(255, 255, 255, 0.274);
+        }
+
+        #hex {
+            color: #56adeb;
+        }
+
+    </style>
+
+</head>
+<body>
+    <div class="container">
+        <div class="title-wrapper">
+            <p>Random Hex Color Flipper</p>
+        </div>
+
+    <div class="spacer200"></div>
+
+        <div class="color-name-wrapper">
+            <p>Background Color: <span id='hex'>#808080</span></p>
+        </div>
+
+        <div class="spacer50"></div>
+
+        <div class="button-wrapper">
+            <button>
+                Click Me
+            </button>
+        </div>
+    </div>
+
+    <script>
+        const container = document.querySelector('.container')
+        const spanHex = document.getElementById('hex')
+        const button = document.querySelector('button')
+
+        const randomHexColor = () => {
+            let letters = 'ABCDEF0123456789'.split('');
+            //console.log(letters)
+            let color = '#';
+                for (i = 0; i < 6; i++ ) {
+                    color += letters[Math.round(Math.random() * 15)];
+                }
+                console.log(color);
+                return color
+            }
+        //console.log(randomHexColor())
+
+        function buttonPress() {
+            let color = randomHexColor()
+            container.style = `
+                background: ${color}
+                `
+            spanHex.innerHTML = `${color}`
+        }
+
+        button.addEventListener('click', buttonPress) //change func
+
+        container.style
+
+    </script>
+</body>
+</html>
